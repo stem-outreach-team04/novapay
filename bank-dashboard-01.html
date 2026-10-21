@@ -516,6 +516,15 @@
   <script>
     let balance = 1250;
 
+    document.getElementById("withdraw-amount").addEventListener("input", function () {
+      let v = this.value.replace(/[^0-9.]/g, "");
+      const i = v.indexOf(".");
+      if (i !== -1) {
+        v = v.slice(0, i + 1) + v.slice(i + 1).replace(/\./g, "").slice(0, 2);
+      }
+      if (v !== this.value) this.value = v;
+    });
+
     function makeWithdrawal() {
       const successEl = document.getElementById("wd-success");
       const errorEl   = document.getElementById("wd-error");
