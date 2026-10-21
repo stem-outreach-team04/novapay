@@ -550,7 +550,7 @@
       const principal = parseFloat(document.getElementById("int-amount").value);
       const rate      = parseFloat(document.getElementById("int-rate").value);
 
-      const interest = principal * rate * 12;
+      const interest = principal * (rate / 100);
 
       const box = document.getElementById("int-result-box");
       box.style.display = "block";
