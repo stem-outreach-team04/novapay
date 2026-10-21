@@ -379,6 +379,12 @@
       .message { max-width: 88%; }
       .chips { padding: 0 12px 10px; }
     }
+
+    body[data-animations="off"] .mascot,
+    body[data-animations="off"] .mascot *,
+    body[data-animations="off"] .typing-dots span {
+      animation: none !important;
+    }
   </style>
 </head>
 <body>
@@ -398,6 +404,7 @@
 
       <div class="top-right">
         <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme">🌙 Night mode</button>
+        <button id="animToggle" class="theme-toggle" type="button" aria-pressed="true">✨ Animations: On</button>
         <div class="status"><span class="dot"></span> AI helper online</div>
       </div>
     </header>
@@ -515,6 +522,19 @@
       applyTheme(current === 'light' ? 'dark' : 'light');
     });
 
+    const animToggle = document.getElementById('animToggle');
+
+    function applyAnimations(on) {
+      document.body.setAttribute('data-animations', on ? 'on' : 'off');
+      animToggle.textContent = on ? '✨ Animations: On' : '🚫 Animations: Off';
+      animToggle.setAttribute('aria-pressed', String(on));
+      try { localStorage.setItem('moneyBuddyAnimations', on ? 'on' : 'off'); } catch (e) {}
+    }
+
+    animToggle.addEventListener('click', () => {
+      applyAnimations(document.body.getAttribute('data-animations') === 'off');
+    });
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const text = input.value.trim();
@@ -529,6 +549,9 @@
     });
 
     applyTheme(getInitialTheme());
+    let storedAnim = null;
+    try { storedAnim = localStorage.getItem('moneyBuddyAnimations'); } catch (e) {}
+    applyAnimations(storedAnim !== 'off');
     addMessage("Hi! I’m Money Buddy 👋 I can help you budget, save, and make safe money choices.");
   </script>
 </body>
