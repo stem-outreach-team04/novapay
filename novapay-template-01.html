@@ -24,35 +24,45 @@
       --composer-bg: #ffffffd9;
       --typing-bg: #f8fbff;
       --typing-border: #dfe8ff;
+      --typing-dot: #8fa2d9;
       --chip-bg: #f8faff;
       --chip-text: #3b4f78;
       --chip-hover: #eef3ff;
+      --chip-line-hover: #8fa2d9;
+      --focus-line: #b9cafe;
+      --focus-glow: #6a7dff1f;
+      --user-shadow: rgba(106, 125, 255, 0.3);
       --title: #1d2d4d;
     }
 
     body[data-theme="dark"] {
-      --bg-1: #0e1424;
-      --bg-2: #161d33;
-      --panel: #1a233ad9;
-      --text: #e7eeff;
-      --muted: #b3c0e4;
-      --line: #2b395f;
-      --accent: #8ea2ff;
-      --accent-2: #9e8dff;
-      --user: #5f75ff;
-      --bot: #24314f;
+      --bg-1: #160e20;
+      --bg-2: #241432;
+      --panel: #2b1b39e6;
+      --text: #fff3e6;
+      --muted: #d3bddc;
+      --line: #54365f;
+      --accent: #ffad5a;
+      --accent-2: #ff7a36;
+      --user: #e87527;
+      --bot: #342342;
       --ok: #4fd6aa;
       --shadow: 0 20px 44px rgba(0, 0, 0, 0.45);
-      --top-bg: linear-gradient(180deg, #1d2741ee, #1a233add);
-      --chat-bg-a: #1b2742;
-      --chat-bg-b: #14203a;
-      --composer-bg: #1b2641e6;
-      --typing-bg: #223155;
-      --typing-border: #324776;
-      --chip-bg: #243456;
-      --chip-text: #dce6ff;
-      --chip-hover: #2b3d66;
-      --title: #f1f5ff;
+      --top-bg: linear-gradient(180deg, #322142ee, #2b1b39dd);
+      --chat-bg-a: #342047;
+      --chat-bg-b: #261738;
+      --composer-bg: #2c1e3ce6;
+      --typing-bg: #372748;
+      --typing-border: #62446f;
+      --typing-dot: #ffad5a;
+      --chip-bg: #39274b;
+      --chip-text: #ffe1bf;
+      --chip-hover: #493159;
+      --chip-line-hover: #ffad5a;
+      --focus-line: #ffc078;
+      --focus-glow: #ff9d3b35;
+      --user-shadow: rgba(255, 122, 54, 0.3);
+      --title: #fff5e8;
     }
 
     * { box-sizing: border-box; }
@@ -71,8 +81,8 @@
 
     body[data-theme="dark"] {
       background:
-        radial-gradient(1200px 600px at -10% -10%, #1a2750 0%, transparent 60%),
-        radial-gradient(900px 500px at 110% -20%, #32255a 0%, transparent 60%),
+        radial-gradient(1200px 600px at -10% -10%, #40204f 0%, transparent 60%),
+        radial-gradient(900px 500px at 110% -20%, #512f37 0%, transparent 60%),
         linear-gradient(180deg, var(--bg-1), var(--bg-2));
     }
 
@@ -89,7 +99,7 @@
     }
 
     body[data-theme="dark"] .app {
-      border-color: #2d3c66;
+      border-color: #593966;
     }
 
     .top {
@@ -267,7 +277,7 @@
       background: var(--user);
       color: #fff;
       border-top-right-radius: 8px;
-      box-shadow: 0 10px 20px rgba(106, 125, 255, 0.3);
+      box-shadow: 0 10px 20px var(--user-shadow);
     }
 
     .typing {
@@ -292,7 +302,7 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: #8fa2d9;
+      background: var(--typing-dot);
       animation: bounce 1s infinite ease-in-out;
     }
 
@@ -325,7 +335,7 @@
     .chip:hover {
       transform: translateY(-1px);
       background: var(--chip-hover);
-      border-color: color-mix(in srgb, var(--line) 70%, #8fa2d9 30%);
+      border-color: color-mix(in srgb, var(--line) 70%, var(--chip-line-hover) 30%);
     }
 
     .composer {
@@ -348,14 +358,14 @@
     }
 
     body[data-theme="dark"] .composer input {
-      background: #0f1930;
-      color: #eef3ff;
-      border-color: #304470;
+      background: #1b1128;
+      color: #fff3e6;
+      border-color: #654977;
     }
 
     .composer input:focus {
-      border-color: #b9cafe;
-      box-shadow: 0 0 0 4px #6a7dff1f;
+      border-color: var(--focus-line);
+      box-shadow: 0 0 0 4px var(--focus-glow);
     }
 
     .composer button {
